@@ -22,4 +22,5 @@ RUN mkdir -p /home/jenkins/.ansible && \
     chown -R 1000:1000 /home/jenkins/.ssh
 RUN apt install sudo -y
 RUN echo "jenkins ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+RUN dockerd &
 USER jenkins
