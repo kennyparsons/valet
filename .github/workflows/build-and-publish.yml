@@ -1,4 +1,4 @@
-name: Create and publish a Docker image
+name: Latest Docker Build and Publish
 
 on:
   push:
@@ -31,6 +31,10 @@ jobs:
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          flavor: latest=true
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
